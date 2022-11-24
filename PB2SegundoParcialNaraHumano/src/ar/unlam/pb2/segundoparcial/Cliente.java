@@ -11,13 +11,14 @@ public class Cliente {
 	private Integer numeroMovil;
 	private Long tiempoEntrada;
 	private Long tiempoSalida;
-	
+	private Long tiempoEspera;
 	
 	public Cliente(String nombre, Integer numeroMovil) {
 		Calendar today = Calendar.getInstance();
 		this.nombre = nombre;
 		this.numeroMovil = numeroMovil;
 		this.tiempoEntrada = obtenerHoraEntrada();
+		this.tiempoEspera = 0l;
 	}
 
 	private Long obtenerHoraEntrada() {
@@ -40,6 +41,15 @@ public class Cliente {
 	public void setTiempoSalida(Long l) {
 		this.tiempoSalida = l;
 	}
+	
+
+	public Long getTiempoEspera() {
+		return tiempoEspera;
+	}
+
+	public void setTiempoEspera(Long tiempoEspera) {
+		this.tiempoEspera = tiempoEspera;
+	}
 
 	@Override
 	public int hashCode() {
@@ -57,7 +67,16 @@ public class Cliente {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(nombre, other.nombre) && Objects.equals(numeroMovil, other.numeroMovil);
 	}
+
+	public void agregarTiempoEsperaMinutos(Integer i) {
+		
+		this.tiempoEspera += i;
+		
+	}
 	
+	
+	
+
 	
 	
 	

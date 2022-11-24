@@ -46,11 +46,16 @@ public class TallerMecanicoTest {
 		Cliente cliente2 = new Cliente("Perez Gaston", 1113587413);
 		
 		TallerMecanico nuevoTaller = new TallerMecanico();
+		nuevoTaller.aniadirNoAtendidos(cliente);
 		nuevoTaller.atenderCliente(cliente);
 		nuevoTaller.aniadirNoAtendidos(cliente2);
-		Double ve = 0.0;
+		nuevoTaller.aniadirEnEspera(cliente2);
+		cliente2.agregarTiempoEsperaMinutos(5);
+		
+		Double ve = 5.0;
 		Double vo = nuevoTaller.obtenerTiempoEsperaMedioNoAtendidos();
-
+		
+		Assert.assertEquals(ve, vo);
 	}
 	
 	@Test
@@ -63,7 +68,6 @@ public class TallerMecanicoTest {
 		Integer ve = 1;
 		Integer vo = nuevoTaller.obtenerClientesEnEspera();
 		Assert.assertEquals(ve, vo);
-		
 	}
 	
 	@Test
